@@ -22,7 +22,9 @@ This Simple Calculator is a basic web application built using HTML, CSS, and Jav
 
 3. Click on the "=" button to see the result.
 
-4. To clear the input, click on the "C" button.
+4. To clear all the input, click on the "AC" button.
+5. 
+4. To clear the input, click on the "DE" button.
 
 ## Deployment
 
