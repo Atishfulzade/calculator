@@ -1,32 +1,43 @@
-let display = document.querySelector(".display");
-let buttons = document.querySelectorAll(".button");
-let del = document.querySelector(".delete");
-let allclear = document.querySelector(".all-clear");
-let equal = document.querySelector(".equal");
-let temp = "";
+let display = document.querySelector("#display");
+let button = document.querySelectorAll("button");
+let theme = document.querySelector("#theme");
+let container = document.querySelector(".container");
+let string = "";
 
-let myImg;
-function myFunction() {
-  var x = document.getElementsByClassName("myImg").src;
-  document.getElementById("demo").innerHTML = x;
-}
-const darkModeToggle = document.querySelector("#dark-mode-toggle");
-const lightModeStylesheet = document.querySelector(
-  'link[href="calculator.css"]'
-);
-const darkModeStylesheet = document.querySelector('link[href="dark.css"]');
+const equal = (e) => {
+  console.log(e);
+  if (e.target.innerHTML == "=") {
+    string = eval(string);
 
-darkModeToggle.addEventListener("click", () => {
-  if (darkModeStylesheet.disabled) {
-    darkModeStylesheet.disabled = false;
-    lightModeStylesheet.disabled = true;
-    darkModeToggle.getElementsByClassName(myImg);
+    display.value = string;
+  } else if (e.target.innerHTML == "AC") {
+    string = "";
+    display.value = string;
+  } else if (e.target.innerHTML == "DE") {
+    string = string.substring(0, string.length - 1);
+    display.value = string;
   } else {
-    lightModeStylesheet.disabled = false;
-    darkModeStylesheet.disabled = true;
-    darkModeToggle.getElementsByClassName(myImg);
+    string += e.target.innerHTML;
+    display.value = string;
   }
-});
-buttons.forEach((e) => {
-  console.log(e.value);
+};
+// const enterKey = (e) => {
+//   if (e.keyCode == 13 || e.keyCode == 61) {
+//     string = eval(string);
+
+//     display.value = string;
+//   } else if (e.keyCode == 13 || e.keyCode == 61) {
+//     string = "";
+//     display.value = string;
+//   } else if (e.keyCode == 13 || e.keyCode == 61) {
+//     string = string.substring(0, string.length - 1);
+//     display.value = string;
+//   } else {
+//     string += e.target.innerHTML;
+//     display.value = string;
+//   }
+// };
+
+button.forEach((button) => {
+  button.addEventListener("click", equal);
 });
